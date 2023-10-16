@@ -1,0 +1,27 @@
+@startuml SRPClassDiagram
+
+class Car {
+    - _id: String
+    - _model: String
+    - _brand: String
+    + Car(id: String, model: String, brand: String)
+    + getId(): String
+    + getModel(): String
+    + getBrand(): String
+}
+
+class CarManager {
+    - _carsDb: List<Car>
+    + getFromDb(carId: String): Car
+}
+
+class CarInformationProvider {
+    - _carsDb: List<Car>
+    + getCarsNames(): String
+    + getBestCar(): Car
+}
+
+Car -- CarManager : Manages
+Car -- CarInformationProvider : Provides Info
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml exampleRefactoredClassDiagram
+
+interface IWorker {
+    {abstract} String work()
+}
+
+interface IEater {
+    {abstract} String eat()
+}
+
+class FloorManager {
+    - _workers: List<IWorker>
+    + FloorManager(workers: List<IWorker>)
+    + manage(): void
+}
+
+class Human {
+    + work(): String
+    + eat(): String
+}
+
+class Robot {
+    + work(): String
+}
+
+class MessHall {
+    - _eaters: List<IEater>
+    + MessHall(eaters: List<IEater>)
+    + manage(): void
+}
+
+IWorker <|.. Human
+IWorker <|.. Robot
+IEater <|.. Human
+
+FloorManager --> IWorker
+MessHall --> IEater
+
+@enduml

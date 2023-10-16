@@ -1,0 +1,29 @@
+@startuml RectangleSquareRefactoredClassDiagram
+
+class Rectangle {
+  -width: int
+  -height: int
+  +getWidth(): int
+  +setWidth(width: int): void
+  +getHeight(): int
+  +setHeight(height: int): void
+  +getArea(): int
+}
+
+class Square {
+  -side: int
+  +getSide(): int
+  +setSide(side: int): void
+  +getArea(): int
+}
+
+class RectangleTest{
+    +testSetWidth_Rectangle(): void
+}
+class SquareTest{
+    +testSetWidth_Square(): void
+}
+RectangleTest --> Rectangle
+SquareTest --> Square
+
+@enduml

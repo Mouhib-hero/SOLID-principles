@@ -1,0 +1,44 @@
+@startuml exerciseRefactoredClassDiagram
+
+package OCP.Exercise_refactored {
+    class ResourceAllocator {
+        -static final INVALID_RESOURCE_ID: int = -1
+        +allocate(resources: List<Resource>): int
+        +free(resources: List<Resource>): void
+    }
+    interface Resource {
+        +allocate(): int
+        +free(resourceId: int): void
+        +getResourceId(): int
+    }
+    class SpaceSlot {
+        -resourceId: int
+        +SpaceSlot(resourceId: int)
+        +getResourceId(): int
+        +allocate(): int
+        +free(resourceId: int): void
+        +markSpaceSlotFree(resourceId: int): void
+        +markSpaceSlotBusy(resourceId: int): void
+        +findFreeSpaceSlot(): int
+    }
+    class TimeSlot {
+        -resourceId: int
+        +TimeSlot(resourceId: int)
+        +getResourceId(): int
+        +allocate(): int
+        +free(resourceId: int): void
+        +markTimeSlotFree(resourceId: int): void
+        +markTimeSlotBusy(resourceId: int): void
+        +findFreeTimeSlot(): int
+    }
+}
+'ResourceAllocator uses all the other components of the class diagram
+ResourceAllocator --> Resource 
+ResourceAllocator --> SpaceSlot
+ResourceAllocator --> TimeSlot
+
+'SpaceSlot and TimeSlot classes implement the Resource interface
+SpaceSlot ..|> Resource
+TimeSlot ..|> Resource
+
+@enduml

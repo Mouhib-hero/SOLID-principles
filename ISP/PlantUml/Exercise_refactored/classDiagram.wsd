@@ -1,0 +1,40 @@
+@startuml exerciseRefactoredClassDiagram
+
+interface NormalDoor {
+    void lock()
+    void unlock()
+    void open()
+    void close()
+}
+
+interface ITimedDoor implements NormalDoor {
+    void timeOutCallback()
+}
+
+interface ISensingDoor implements NormalDoor {
+    void proximityCallback()
+}
+
+class SensingDoor implements ISensingDoor {
+    - _locked: boolean
+    - _opened: boolean
+    + lock()
+    + unlock()
+    + open()
+    + close()
+    + proximityCallback()
+}
+
+class TimedDoor implements ITimedDoor {
+    - _locked: boolean
+    - _opened: boolean
+    + lock()
+    + unlock()
+    + open()
+    + close()
+    + timeOutCallback()
+}
+
+
+
+@enduml

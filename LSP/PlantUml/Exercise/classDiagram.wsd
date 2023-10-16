@@ -1,0 +1,29 @@
+@startuml exerciseClassDiagram
+
+package LSP.Exercise {
+    class Pool {
+        + run(): void
+        - quack(ducks: Duck...): void
+        - swim(ducks: Duck...): void
+        + main(args: String[]): void
+    }
+
+    class Duck {
+        + quack(): void
+        + swim(): void
+    }
+
+    class ElectronicDuck {
+        - _on: boolean
+        + quack(): void
+        + swim(): void
+        + turnOn(): void
+        + turnOff(): void
+    }
+}
+
+Pool --> Duck
+Pool --> ElectronicDuck
+ElectronicDuck --|> Duck
+
+@enduml

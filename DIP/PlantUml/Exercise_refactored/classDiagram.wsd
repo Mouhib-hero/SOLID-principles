@@ -1,0 +1,27 @@
+@startuml refactoredExerciseClassDiagram
+
+interface DataStorage {
+    void write(String inputString)
+}
+
+class MyDatabase {
+    void write(String inputString)
+}
+
+class EncodingModule {
+    DataStorage dataStorage
+    void encodeWithFiles()
+    void encodeBasedOnNetworkAndDatabase()
+}
+
+DataStorage <|.. MyDatabase
+EncodingModule --> DataStorage
+
+class EncodingModuleClient {
+    DataStorage dataStorage
+    void main(String[] args) throws IOException
+}
+
+EncodingModuleClient --> DataStorage
+
+@enduml

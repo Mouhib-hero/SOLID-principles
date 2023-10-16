@@ -1,0 +1,31 @@
+@startuml exampleRefactoredClassDiagram
+
+interface Equipment {
+    +turnOn(): void
+    +turnOff(): void
+}
+
+class Lamp {
+    +turnOn(): void
+    +turnOff(): void
+}
+
+class Fan {
+    +turnOn(): void
+    +turnOff(): void
+    +getSpeed(): int
+    +setSpeed(speed: int): void
+}
+
+class Button {
+    -state: boolean
+    -equipment: Equipment
+    +Button(equipment: Equipment)
+    +toggle(): void
+}
+
+Button --> Equipment
+Equipment <|.. Lamp
+Equipment <|.. Fan
+
+@enduml

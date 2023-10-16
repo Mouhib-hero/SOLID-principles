@@ -1,0 +1,29 @@
+@startuml exampleRefactoredClassDiagram
+
+class Employee {
+    - _empId: int
+    - _name: String
+    - _monthlySalary: double
+    - _manager: String
+    - _leavesTaken: int
+    - _yearsInOrg: int
+    - _leavesLeftPreviously: int[]
+    + Employee(empId: int, monthlySalary: double, manager: String, name: String, leavesTaken: int, leavesLeftPreviously: int[])
+    + getEmpId(): int
+    + getName(): String
+    + getLeavesLeft(): int
+    + getAnnualSalary(): long
+    + getTotalLeavesLeftPreviously(): int
+    + getManager(): String
+}
+
+class EmployeeFormatter {
+    - _employee: Employee
+    + EmployeeFormatter(employee: Employee)
+    + toHtml(): String
+    + formatManager(manager: String): String
+}
+
+Employee --> EmployeeFormatter
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml exampleClassDiagarm
+
+class Lamp {
+    +turnOn(): void
+    +turnOff(): void
+    +getColor(): int
+    +setColor(color: int): void
+}
+
+class Button {
+    -lamp: Lamp
+    -state: boolean
+    +Button(lamp: Lamp)
+    +toggle(): void
+}
+
+Button --> Lamp
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml exampleRefactoredClassDiagram
+package "com.directi.training.ocp.example_refactored" {
+    class Shape {
+        +getArea(): double
+    }
+    class Circle {
+        -_radius: double
+        +Circle(radius: double)
+        +getRadius(): double
+        +getArea(): double
+    }
+    class AreaCalculator {
+        +calculateArea(shapes: List<Shape>)
+    }
+    class Square {
+        -_side: double
+        +Square(side: double)
+        +getSide(): double
+        +getArea(): double
+    }
+'Square and Circle inherit from Shape
+    Shape <|-- Circle
+    Shape <|-- Square
+'AreaCalculator uses Shape with getArea() to calculate
+'The area for each class (Square and Circle)
+    AreaCalculator --> Shape
+}
+@enduml

@@ -1,0 +1,26 @@
+@startuml exerciseRefactored
+
+class Duck {
+    +quack(): void
+    +swim(): void
+}
+
+class Pool {
+    +run(): void
+    -quackAndSwim(duck: Duck): void
+}
+
+class ElectronicDuck {
+    -_on: boolean
+    +quack(): void
+    +swim(): void
+    +turnOn(): void
+    +turnOff(): void
+}
+
+ElectronicDuck --|> Duck
+
+Pool --> Duck
+Pool --> ElectronicDuck
+
+@enduml

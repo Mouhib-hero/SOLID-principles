@@ -1,0 +1,16 @@
+@startuml EmployeeClassDiagram
+
+class Employee {
+    - LEAVES_ALLOWED: int
+    - _empId: int
+    - _name: String
+    - _monthlySalary: double
+    - _manager: String
+    - _leavesTaken: int
+    - _yearsInOrg: int
+    - _leavesLeftPreviously: int[]
+    + Employee(empId: int, monthlySalary: double, manager: String, name: String, leavesTaken: int, leavesLeftPreviously: int[])
+    + toHtml(): String
+}
+
+@enduml

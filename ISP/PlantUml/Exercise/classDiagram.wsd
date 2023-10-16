@@ -1,0 +1,51 @@
+@startuml exerciceClassDiagram
+
+interface Door {
+    void lock()
+    void unlock()
+    void open()
+    void close()
+    void timeOutCallback()
+    void proximityCallback()
+}
+
+class SensingDoor {
+    - _locked: boolean
+    - _opened: boolean
+    + SensingDoor(sensor: Sensor)
+    + lock()
+    + unlock()
+    + open()
+    + close()
+    + timeOutCallback()
+    + proximityCallback()
+}
+
+class Sensor {
+    + register(door: Door)
+    - isPersonClose(): boolean
+}
+
+class TimedDoor {
+    - _locked: boolean
+    - _opened: boolean
+    + TimedDoor(timer: Timer)
+    + lock()
+    + unlock()
+    + open()
+    + close()
+    + timeOutCallback()
+    + proximityCallback()
+}
+
+class Timer {
+    + register(timeOut: long, door: Door)
+}
+
+Door <|.. SensingDoor
+Door <|.. TimedDoor
+Timer --> Door
+Sensor --> Door
+Timer <-- TimedDoor
+
+@enduml

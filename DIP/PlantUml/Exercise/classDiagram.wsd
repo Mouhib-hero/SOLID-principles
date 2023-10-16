@@ -1,0 +1,19 @@
+@startuml exerciseDiagramClass
+
+class MyDatabase {
+    +write(inputString: String): int
+}
+
+class EncodingModuleClient {
+    +main(args: String[]): void
+}
+
+class EncodingModule {
+    +encodeWithFiles(): void
+    +encodeBasedOnNetworkAndDatabase(): void
+}
+
+EncodingModuleClient -- EncodingModule
+EncodingModule -- MyDatabase
+
+@enduml

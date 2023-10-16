@@ -1,0 +1,34 @@
+@startuml exampleClassDiagram
+package "com.directi.training.ocp.example" {
+    class Shape {
+        +getType(): ShapeType
+    }
+    class Circle {
+        -_radius: double
+        +Circle(radius: double)
+        +getRadius(): double
+    }
+    class Square {
+        -_side: double
+        +Square(side: double)
+        +getSide(): double
+    }
+    enum ShapeType {
+        CIRCLE
+        SQUARE
+    }
+    class AreaCalculator {
+        +calculateArea(shapes: List<Shape>)
+        +calculateSquareArea(square: Square): double
+        +calculateCircleArea(circle: Circle): double
+    }
+'The ShapeType Categorizes a Shape
+    ShapeType --* Shape : Categorizes
+'Circle and Square inherit Shape
+    Shape <|-- Circle
+    Shape <|-- Square
+'AreaCalculator uses Square and Circle
+    AreaCalculator --> Square
+    AreaCalculator --> Circle
+}
+@enduml

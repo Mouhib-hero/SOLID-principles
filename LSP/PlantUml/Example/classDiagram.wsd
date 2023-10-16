@@ -1,0 +1,28 @@
+@startuml exampleClassDiagram
+
+package com.directi.training.lsp.example {
+    class Rectangle {
+        - _width: int
+        - _height: int
+        + getWidth(): int
+        + setWidth(width: int): void
+        + getHeight(): int
+        + setHeight(height: int): void
+        + getArea(): int
+    }
+
+    class Square {
+        + setWidth(width: int): void
+        + setHeight(height: int): void
+    }
+
+    class RectangleTest {
+        + testSetWidth_Rectangle(): void
+        + testSetWidth_Square(): void
+    }
+}
+
+Rectangle --|> Square
+RectangleTest --> Rectangle
+
+@enduml

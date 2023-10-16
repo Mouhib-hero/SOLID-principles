@@ -1,0 +1,35 @@
+@startuml exampleClassDiagram
+
+class Factory {
+    -_workers: List<Worker>
+    +Factory(workers: List<Worker>)
+    +manage(): void
+}
+
+class Human {
+    +work(): String
+    +eat(): String
+}
+
+class MessHall {
+    -_workers: List<Worker>
+    +MessHall(workers: List<Worker>)
+    +manage(): void
+}
+
+class Robot {
+    +work(): String
+    +eat(): String
+}
+
+interface Worker {
+    +work(): String
+    +eat(): String
+}
+
+Factory --> Worker
+MessHall --> Worker
+Human ..|> Worker
+Robot ..|> Worker
+
+@enduml
